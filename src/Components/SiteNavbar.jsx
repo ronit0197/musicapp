@@ -1,7 +1,12 @@
 import React from "react";
-import { Navbar, Container, Form, FormControl } from "react-bootstrap";
+import { Navbar, Container, FormControl } from "react-bootstrap";
 
-const SiteNavbar = () => {
+const SiteNavbar = ({ setSearchQuery }) => {
+
+    const handleSearch = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
     return (
         <Navbar className="site-navbar" expand="lg">
             <Container>
@@ -15,14 +20,15 @@ const SiteNavbar = () => {
                 </Navbar.Brand>
 
                 {/* Search Bar */}
-                <Form className="d-flex navbar-search">
+                <div className="d-flex navbar-search">
                     <FormControl
                         type="search"
                         placeholder="Search 90's songs"
                         className="me-2"
                         aria-label="Search"
+                        onChange={handleSearch}
                     />
-                </Form>
+                </div>
             </Container>
         </Navbar>
     );

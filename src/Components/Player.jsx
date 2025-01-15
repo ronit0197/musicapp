@@ -95,7 +95,7 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
                         <icons.SkipEndFill onClick={nextSong} color='white' className='next' />
                     </div>
                 </div>
-                <div className="col-lg-4 col-md-3 col-6 player-time-control">
+                <div className="col-lg-6 col-md-3 col-6 player-time-control">
                     <div className="d-flex align-items-center justify-content-center h-100">
                         <span className='text-light player-timing'>{currentTime}</span>
                         <input
@@ -112,7 +112,7 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
                         <span className='text-light player-timing'>{duration}</span>
                     </div>
                 </div>
-                <div className="col-lg-3 col-md-3 col-6 player-sound-control">
+                <div className="col-lg-1 col-md-3 col-6 player-sound-control">
                     <div className="d-flex align-items-center justify-content-end h-100 ps-lg-5 ps-md-4 ps-3">
                         <icons.SpeakerFill onClick={soundToggle} className='me-4 sound-icon' color='white' />
                     </div>

@@ -3,7 +3,7 @@ import "./scss/App.scss"
 import Home from './Pages/Home';
 import SiteNavbar from './Components/SiteNavbar'
 import Player from './Components/Player';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MediaContext } from './Context/MediaContext';
 
 function App() {
@@ -13,14 +13,16 @@ function App() {
   // Get the current song
   const currentSong = songs[currentSongIndex];
 
+  const [searchQuery, setSearchQuery] = useState('');
+
   console.log("Songs:", songs)
   console.log("Current song", currentSongIndex)
 
   return (
     <BrowserRouter>
-      <SiteNavbar />
+      <SiteNavbar setSearchQuery={setSearchQuery} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home searchQuery={searchQuery} />} />
       </Routes>
       {
         currentSong &&
