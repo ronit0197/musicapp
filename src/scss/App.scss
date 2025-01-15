@@ -1,0 +1,380 @@
+:root {
+    --primary: black;
+    --secondary: rgb(45, 45, 45);
+    --light-dark: rgb(124, 124, 124);
+    --light: #f8f9fa;
+    --dark-transparant: rgba(0, 0, 0, 0.415);
+}
+
+.song-card {
+
+    @media screen and (max-width:991px) {
+        height: 150px !important;
+    }
+
+    .card-title {
+        font-size: 12px;
+
+        @media screen and (max-width:991px) {
+            font-size: 10px;
+        }
+    }
+
+    .card-desc {
+        font-size: 10px;
+
+        @media screen and (max-width:991px) {
+            display: none;
+        }
+    }
+
+    .card-overlay {
+        height: 71%;
+        width: 100%;
+        position: absolute;
+        background: transparent;
+        transition: 0.5s ease all;
+
+        &:hover {
+            background: var(--dark-transparant);
+
+            .play-icon {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width:991px) {
+            height: 70%;
+        }
+
+        .play-icon {
+            font-size: 40px;
+            color: var(--light);
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            cursor: pointer;
+            transform: translateY(20px);
+            /* Start slightly below */
+            opacity: 0;
+            /* Initially hidden */
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            /* Smooth transition */
+
+            @media screen and (max-width:991px) {
+                font-size: 25px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+
+        .playing-icon{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media screen and (max-width:991px) {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+
+}
+
+.site-navbar {
+    background-color: var(--light); // Light background color
+    padding: 10px 20px;
+
+    .navbar-logo {
+        height: 50px;
+        width: auto; // Maintain aspect ratio
+    }
+
+    .navbar-search {
+        width: 50%; // Adjust the width of the search bar
+        margin-left: auto; // Push it to the right
+
+        input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 8px 15px;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: var(--light-dark); // Bootstrap primary color
+                outline: none;
+                box-shadow: 0 0 5px var(--secondary);
+            }
+        }
+    }
+}
+
+.player {
+    width: 100%;
+    height: 70px;
+    background: var(--primary);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .player-controls {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        .previous,
+        .next {
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .play {
+            font-size: 35px;
+            cursor: pointer;
+        }
+    }
+
+    .player-details {
+        display: flex;
+
+        .player-album {
+            width: 50px;
+        }
+
+        .rotate-album {
+            animation: rotate 5s linear infinite;
+        }
+
+        p {
+            font-size: 12px;
+            user-select: none;
+
+            @media screen and (max-width:991px) {
+                font-size: 10px;
+            }
+        }
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .player-time-control {
+
+        .player-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 5px;
+            background: linear-gradient(to right, #ff5722, #ff9800);
+            border-radius: 5px;
+            outline: none;
+
+            // Track for WebKit Browsers
+            &::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(to right, #ff5722, #ff9800);
+                border-radius: 5px;
+            }
+
+            // Thumb for WebKit Browsers
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 15px;
+                height: 15px;
+                margin-top: -5px;
+                background: #ffffff;
+                border: 2px solid #ff5722;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                transition: 0.3s ease all;
+
+                &:hover {
+                    width: 20px;
+                    height: 20px;
+                    margin-top: -7px;
+                }
+            }
+
+            // Track for Firefox
+            &::-moz-range-track {
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(to right, #ff5722, #ff9800);
+                border-radius: 5px;
+            }
+
+            // Thumb for Firefox
+            &::-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                background: #ffffff;
+                border: 2px solid #ff5722;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            // IE (Optional, if supporting older versions)
+            &::-ms-track {
+                width: 100%;
+                height: 5px;
+                background: transparent;
+                border-color: transparent;
+                color: transparent;
+            }
+
+            &::-ms-thumb {
+                width: 15px;
+                height: 15px;
+                background: #ffffff;
+                border: 2px solid #ff5722;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            @media screen and (max-width:991px) {
+                width: 100% !important;
+                position: fixed;
+                left: 0;
+                bottom: 70px;
+                margin: 0 !important;
+                border-radius: 0px;
+            }
+        }
+
+
+        .player-timing {
+            font-size: 12px;
+            font-weight: 600;
+            user-select: none;
+
+            @media screen and (max-width:991px) {
+                display: none;
+            }
+        }
+    }
+
+    .player-sound-control {
+
+        .sound-icon {
+            cursor: pointer;
+
+            @media screen and (max-width:991px) {
+                display: none;
+            }
+        }
+
+        .sound-range {
+            width: 80px;
+            height: 150px;
+            background: var(--primary);
+            border-radius: 5px 5px 0 0;
+            position: fixed;
+            bottom: 60px;
+            right: 6px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            .sound-input {
+                rotate: 90deg;
+                transform: rotate(180deg);
+
+                -webkit-appearance: none;
+                appearance: none;
+                height: 5px;
+                background: linear-gradient(to right, #ff5722, #ff9800);
+                border-radius: 5px;
+                outline: none;
+
+                // Track for WebKit Browsers
+                &::-webkit-slider-runnable-track {
+                    width: 100%;
+                    height: 5px;
+                    background: linear-gradient(to right, #ff5722, #ff9800);
+                    border-radius: 5px;
+                }
+
+                // Thumb for WebKit Browsers
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 15px;
+                    height: 15px;
+                    margin-top: -5px;
+                    background: #ffffff;
+                    border: 2px solid #ff5722;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    transition: 0.3s ease all;
+
+                    &:hover {
+                        width: 20px;
+                        height: 20px;
+                        margin-top: -7px;
+                    }
+                }
+
+                // Track for Firefox
+                &::-moz-range-track {
+                    width: 100%;
+                    height: 5px;
+                    background: linear-gradient(to right, #ff5722, #ff9800);
+                    border-radius: 5px;
+                }
+
+                // Thumb for Firefox
+                &::-moz-range-thumb {
+                    width: 15px;
+                    height: 15px;
+                    background: #ffffff;
+                    border: 2px solid #ff5722;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+
+                // IE (Optional, if supporting older versions)
+                &::-ms-track {
+                    width: 100%;
+                    height: 5px;
+                    background: transparent;
+                    border-color: transparent;
+                    color: transparent;
+                }
+
+                &::-ms-thumb {
+                    width: 15px;
+                    height: 15px;
+                    background: #ffffff;
+                    border: 2px solid #ff5722;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+
+        .sound-range-show {
+            display: flex !important;
+        }
+    }
+}
