@@ -9,7 +9,7 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
     const { nextSong, previousSong, currentSongIndex, isPlaying, setIsPlaying } = useContext(MediaContext);
 
     const [soundShow, setSoundShow] = useState(false)
-    
+
     const [currentTime, setCurrentTime] = useState("00:00");
     const [duration, setDuration] = useState("00:00");
     const [volume, setVolume] = useState(1);
@@ -38,7 +38,7 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
     const handleTimeUpdate = () => {
         const audio = audioRef.current;
         setCurrentTime(formatTime(audio.currentTime));
-        if(formatTime(audio.currentTime) === duration){
+        if (formatTime(audio.currentTime) === duration) {
             nextSong()
         }
     };
@@ -66,7 +66,7 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
                 <div className="col-lg-3 col-md-3 col-7">
                     <div className="player-details h-100 ps-lg-4 ps-md-0 ps-0">
                         <div className='d-flex align-items-center'>
-                            <Image className={`player-album ${isPlaying ? 'rotate-album' : ''}`} src={currentAlbum} roundedCircle />
+                            <Image className={`player-album border border-2 border-light ${isPlaying ? 'rotate-album' : ''}`} src={currentAlbum} roundedCircle />
                         </div>
                         <div className='ms-3 d-flex align-items-center'>
                             <div>
@@ -114,7 +114,12 @@ const Player = ({ currentSong, currentAlbum, currentAirtist, currentSongName }) 
                 </div>
                 <div className="col-lg-1 col-md-3 col-6 player-sound-control">
                     <div className="d-flex align-items-center justify-content-end h-100 ps-lg-5 ps-md-4 ps-3">
-                        <icons.SpeakerFill onClick={soundToggle} className='me-4 sound-icon' color='white' />
+                        {
+                            volume === 0 ?
+                                <icons.VolumeMuteFill onClick={soundToggle} className='me-4 sound-icon' color='white' />
+                                :
+                                <icons.SpeakerFill onClick={soundToggle} className='me-4 sound-icon' color='white' />
+                        }
                     </div>
                     <div className={`sound-range ${soundShow ? "sound-range-show" : ""}`}>
                         <input

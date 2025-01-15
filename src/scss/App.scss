@@ -16,7 +16,8 @@
         font-size: 12px;
 
         @media screen and (max-width:991px) {
-            font-size: 10px;
+            font-size: 8px;
+            font-weight: bold;
         }
     }
 
@@ -282,13 +283,13 @@
         }
 
         .sound-range {
-            width: 80px;
+            width: 60px;
             height: 150px;
             background: var(--primary);
             border-radius: 5px 5px 0 0;
             position: fixed;
             bottom: 60px;
-            right: 6px;
+            right: 15px;
             display: none;
             justify-content: center;
             align-items: center;

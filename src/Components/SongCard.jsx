@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
-import Card from 'react-bootstrap/Card';
+import { Card, Placeholder, Image } from 'react-bootstrap';
 import * as icons from 'react-bootstrap-icons';
-import Image from 'react-bootstrap/Image';
 import { MediaContext } from '../Context/MediaContext';
 
 const SongCard = ({ SongName, Album, Singer, index }) => {
@@ -12,6 +11,39 @@ const SongCard = ({ SongName, Album, Singer, index }) => {
         setCurrentSongIndex(index); // Set the current song index
         setIsPlaying(true); // Set isPlaying to true
     };
+
+    const truncateSingerName = (singerName) => {
+        const parts = singerName.split(',');
+        if (parts.length > 2) {
+            return `${parts.slice(0, 2).join(', ')}.....`;
+        }
+        return singerName;
+    };
+
+    if (!Album) {
+        return (
+            <Card className="song-card border-0 shadow">
+                <Placeholder as={Card.Img} variant="top" animation="glow">
+                    <Placeholder className="w-100" style={{ height: '180px' }} />
+                </Placeholder>
+                <div className="card-overlay">
+                    <Placeholder.Button variant="light" size="lg" className="play-icon" />
+                </div>
+                <Card.Body>
+                    <Card.Title className="card-title">
+                        <Placeholder as="span" animation="glow">
+                            <Placeholder xs={8} />
+                        </Placeholder>
+                    </Card.Title>
+                    <Card.Text>
+                        <Placeholder as="span" animation="glow">
+                            <Placeholder xs={6} />
+                        </Placeholder>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        )
+    }
 
     return (
         <Card className="song-card border-0 shadow">
@@ -29,7 +61,7 @@ const SongCard = ({ SongName, Album, Singer, index }) => {
             <Card.Body>
                 <Card.Title className='card-title'>{SongName}</Card.Title>
                 <Card.Text>
-                    <span className='card-desc'>{Singer}</span>
+                    <span className='card-desc'>{truncateSingerName(Singer)}</span>
                 </Card.Text>
             </Card.Body>
         </Card>

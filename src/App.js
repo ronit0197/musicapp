@@ -15,9 +15,6 @@ function App() {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  console.log("Songs:", songs)
-  console.log("Current song", currentSongIndex)
-
   return (
     <BrowserRouter>
       <SiteNavbar setSearchQuery={setSearchQuery} />

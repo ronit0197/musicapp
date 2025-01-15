@@ -362,5 +362,19 @@
         "Singer": "Alka Yagnik, Kumar Sanu",
         "Album": "https://c.saavncdn.com/555/Kasoor-Hindi-2001-500x500.jpg",
         "Src": "https://aac.saavncdn.com/555/b10bf16758242918383aa77fde1caad3_sar_160.mp4"
+    },
+    {
+        "SongName": "Tu Hi Meri Shab Hai",
+        "Director": "Pritam",
+        "Singer": "Pritam, KK",
+        "Album": "https://c.saavncdn.com/810/Gangster-Hindi-2024-20240330053536-500x500.jpg",
+        "Src": "https://aac.saavncdn.com/810/52b6b12c661d18d3cf86fe9dbf855199_160.mp4"
+    },
+    {
+        "SongName": "Lamha Lamha",
+        "Director": "Pritam",
+        "Singer": "Pritam, Abhijeet",
+        "Album": "https://c.saavncdn.com/810/Gangster-Hindi-2024-20240330053536-500x500.jpg",
+        "Src": "https://aac.saavncdn.com/810/5451beb7434f1a603e233905fd9e1875_160.mp4"
     }
 ]
