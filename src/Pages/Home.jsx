@@ -7,10 +7,17 @@ import * as icons from 'react-bootstrap-icons';
 const Home = ({ searchQuery }) => {
     const { songs, generations } = useContext(MediaContext);
 
-    // State for pagination for each generation
     const [visibleCounts, setVisibleCounts] = useState(() => {
-        const savedCounts = localStorage.getItem('visibleCounts');
-        return savedCounts ? JSON.parse(savedCounts) : generations.reduce((acc, gen) => ({ ...acc, [gen]: 24 }), {});
+        try {
+            const savedCounts = localStorage.getItem('visibleCounts');
+            if (savedCounts) {
+                return JSON.parse(savedCounts);
+            }
+            return generations.reduce((acc, gen) => ({ ...acc, [gen]: 24 }), {});
+        } catch (error) {
+            console.error("Error reading from localStorage:", error);
+            return generations.reduce((acc, gen) => ({ ...acc, [gen]: 24 }), {});
+        }
     });
 
     // Add a global index to each song
@@ -43,14 +50,17 @@ const Home = ({ searchQuery }) => {
         });
     };
 
-    // Initialize localStorage for visibleCounts when generations change
+    // Update visibleCounts when generations change
     useEffect(() => {
-        if (!localStorage.getItem('visibleCounts')) {
-            localStorage.setItem(
-                'visibleCounts',
-                JSON.stringify(generations.reduce((acc, gen) => ({ ...acc, [gen]: 24 }), {}))
-            );
-        }
+        setVisibleCounts((prevCounts) => {
+            const updatedCounts = generations.reduce((acc, gen) => {
+                // Preserve existing counts or initialize to 24
+                acc[gen] = prevCounts[gen] || 24;
+                return acc;
+            }, {});
+            localStorage.setItem('visibleCounts', JSON.stringify(updatedCounts));
+            return updatedCounts;
+        });
     }, [generations]);
 
     return (
