@@ -8,6 +8,14 @@
     --orange-light: #ff9800;
 }
 
+.home-container{
+    padding-bottom: 30px;
+
+    @media screen and (max-width:991px) {
+        padding-bottom: 80px;
+    }
+}
+
 .load-more-button {
     background-image: linear-gradient(var(--orange-dark), var(--orange-light));
     border: none !important;

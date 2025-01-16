@@ -65,7 +65,7 @@ const Home = ({ searchQuery }) => {
 
     return (
         <div>
-            <Container>
+            <Container className='home-container'>
                 {filteredGenerations.map((generation) => {
                     // Filter songs for the current generation
                     const generationSongs = filteredSongs.filter(
@@ -77,7 +77,7 @@ const Home = ({ searchQuery }) => {
                             <div className='row p-3'>
                                 <div className='col-lg-2 col-md-3 col-4'><span className='fw-bold text-primary-emphasis generation-names'>{generation} Hit songs</span></div><div className='col-lg-10 col-md-9 col-8 d-flex align-items-center'><div className='p-1 w-100 bg-body-tertiary rounded'></div></div>
                             </div>
-                            <div className="row my-4 pb-5">
+                            <div className="row my-4 pb-lg-5 pb-md-4 pb-4">
                                 {generationSongs
                                     .slice(0, visibleCounts[generation] || 24)
                                     .map((song) => (
@@ -97,7 +97,7 @@ const Home = ({ searchQuery }) => {
                                 </p>
                             )}
                             {generationSongs.length > (visibleCounts[generation] || 24) && (
-                                <div className="text-center mb-5 pb-5">
+                                <div className="text-center mb-lg-4 pb-lg-4">
                                     <Button
                                         className="load-more-button"
                                         variant="primary"
