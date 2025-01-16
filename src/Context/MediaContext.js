@@ -9,10 +9,16 @@ export const MediaProvider = ({ children }) => {
     const [songs, setSongs] = useState([]);
     const [currentSongIndex, setCurrentSongIndex] = useState(0); // Track the current song index
     const [isPlaying, setIsPlaying] = useState(false);
+    const [generations, setGenerations] = useState([]);
 
     useEffect(() => {
         // Load the data from Data.json
         setSongs(data);
+
+        // Extract unique generations
+        const uniqueGenerations = [...new Set(data.map((song) => song.Generation))];
+        setGenerations(uniqueGenerations);
+
     }, []);
 
     // Function to go to the next song
@@ -28,7 +34,7 @@ export const MediaProvider = ({ children }) => {
     };
 
     return (
-        <MediaContext.Provider value={{ songs, currentSongIndex, nextSong, previousSong, setCurrentSongIndex, isPlaying, setIsPlaying }}>
+        <MediaContext.Provider value={{ songs, generations, currentSongIndex, nextSong, previousSong, setCurrentSongIndex, isPlaying, setIsPlaying }}>
             {children}
         </MediaContext.Provider>
     );

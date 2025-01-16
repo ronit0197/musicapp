@@ -23,7 +23,7 @@ const SiteNavbar = ({ setSearchQuery }) => {
                 <div className="d-flex navbar-search">
                     <FormControl
                         type="search"
-                        placeholder="Search 90's & 20's song or airtist"
+                        placeholder="Search song or airtist"
                         className="me-2"
                         aria-label="Search"
                         onChange={handleSearch}

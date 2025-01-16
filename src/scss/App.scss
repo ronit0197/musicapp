@@ -4,6 +4,27 @@
     --light-dark: rgb(124, 124, 124);
     --light: #f8f9fa;
     --dark-transparant: rgba(0, 0, 0, 0.415);
+    --orange-dark: #ff5722;
+    --orange-light: #ff9800;
+}
+
+.load-more-button {
+    background-image: linear-gradient(var(--orange-dark), var(--orange-light));
+    border: none !important;
+    border-radius: 50px !important;
+    margin-top: -45px;
+
+    @media screen and (max-width:991px) {
+        margin-top: -55px;
+    }
+}
+
+.generation-section{
+    .generation-names{
+        @media screen and (max-width:991px) {
+            font-size: 12px;
+        }
+    }
 }
 
 .song-card {
@@ -30,7 +51,7 @@
     }
 
     .card-overlay {
-        height: 71%;
+        height: 71.5%;
         width: 100%;
         position: absolute;
         background: transparent;
@@ -70,7 +91,7 @@
             }
         }
 
-        .playing-icon{
+        .playing-icon {
             height: 40px;
             width: 40px;
             border-radius: 50%;
