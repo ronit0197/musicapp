@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import data from "../Data/Data.json";
 
 // Create the context
 export const MediaContext = createContext();
@@ -12,13 +11,27 @@ export const MediaProvider = ({ children }) => {
     const [generations, setGenerations] = useState([]);
 
     useEffect(() => {
-        // Load the data from Data.json
-        setSongs(data);
+        const fetchData = async () => {
+            try {
+                // Fetch data from the serverless function
+                const response = await fetch('/.netlify/functions/get-json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
 
-        // Extract unique generations
-        const uniqueGenerations = [...new Set(data.map((song) => song.Generation))];
-        setGenerations(uniqueGenerations);
+                // Set the fetched data
+                setSongs(data);
 
+                // Extract unique generations
+                const uniqueGenerations = [...new Set(data.map((song) => song.Generation))];
+                setGenerations(uniqueGenerations);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     // Function to go to the next song
