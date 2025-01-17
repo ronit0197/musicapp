@@ -5,6 +5,7 @@ exports.handler = async () => {
     try {
         // Path to your JSON file
         const filePath = path.join(__dirname, 'data.json');
+        console.log('File path:', filePath);
         const data = fs.readFileSync(filePath, 'utf8');
         return {
             statusCode: 200,
