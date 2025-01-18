@@ -8,7 +8,7 @@ const SiteNavbar = ({ setSearchQuery }) => {
     };
 
     return (
-        <Navbar className="site-navbar" expand="lg">
+        <Navbar className="site-navbar shadow" expand="lg">
             <Container>
                 {/* Logo */}
                 <Navbar.Brand href="/">

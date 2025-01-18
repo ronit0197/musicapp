@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, Placeholder, Image } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import * as icons from 'react-bootstrap-icons';
 import { MediaContext } from '../Context/MediaContext';
 
@@ -19,31 +19,6 @@ const SongCard = ({ SongName, Album, Singer, index }) => {
         }
         return singerName;
     };
-
-    if (!Album) {
-        return (
-            <Card className="song-card border-0 shadow">
-                <Placeholder as={Card.Img} variant="top" animation="glow">
-                    <Placeholder className="w-100" style={{ height: '180px' }} />
-                </Placeholder>
-                <div className="card-overlay">
-                    <Placeholder.Button variant="light" size="lg" className="play-icon" />
-                </div>
-                <Card.Body>
-                    <Card.Title className="card-title">
-                        <Placeholder as="span" animation="glow">
-                            <Placeholder xs={8} />
-                        </Placeholder>
-                    </Card.Title>
-                    <Card.Text>
-                        <Placeholder as="span" animation="glow">
-                            <Placeholder xs={6} />
-                        </Placeholder>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        )
-    }
 
     return (
         <Card className="song-card border-0 shadow">
