@@ -4,6 +4,7 @@
 /node_modules
 /upload-firebase
 /.pnp
+/.env
 .pnp.js
 
 # testing
